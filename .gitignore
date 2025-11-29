@@ -28,6 +28,3 @@ pretrained/
 
 # Logs & temp
 *.log
-*.png
-*.jpg
-*.pdf
