@@ -1,0 +1,30 @@
+# ========================
+# requirements.txt
+# XRayLogSurrogate - IPAC'26 Supplementary Material
+# Tested on Python 3.10/3.11/3.12 + Windows/Linux + CUDA 11.8/12.x
+# ========================
+
+# Core scientific stack
+numpy>=1.24,<2.0
+scipy>=1.11
+matplotlib>=3.7
+
+# PyTorch and related packages
+torch>=2.1
+torchvision>=0.16        
+torchaudio>=2.1          
+
+# Scikit-learn for StandardScaler
+scikit-learn>=1.3
+
+
+# install SRW from source for better compatibility
+# pip install git+https://github.com/ochubar/SRW.git#subdirectory=env/work/srw_python
+
+# Additional utilities
+tqdm>=4.65
+numba>=0.58
+
+# For Jupyter notebooks
+jupyter>=1.0
+ipython>=8.0

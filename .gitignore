@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+.coverage
+.tox/
+
+# Jupyter
+.ipynb_checkpoints
+
+# Data & Models 
+*.pkl
+*.pth
+*.pt
+data/
+dataset/
+pretrained/
+*.h5
+*.npz
+
+# Logs & temp
+*.log
+*.png
+*.jpg
+*.pdf
