@@ -65,17 +65,18 @@ where $\bar{L}(x,y)$ is the ensemble mean and $r$ is the retained rank.
 In the present case, **>99.99 % of the log-space energy is captured with only 58 modes** (versus more than 200 modes required in linear intensity space), confirming that the log-manifold is intrinsically low-rank.
 
 <p align="center">
-  <img src="images/log_pod_modes.png" width="820"/>
+  <img src="images/pod_modes_log_linear.png"width = "820"/>
   <br>
-  <b>Figure 2:</b> First sixteen POD modes  computed in logarithmic space. The modes exhibit clear, physically interpretable diffraction and caustic structures, in stark contrast to the noisy, high-rank modes obtained in linear intensity space .
+  <b>Figure 2:</b> POD modes of the log-manifold (left) and linear-manifold (right). The comparison clearly demonstrates that the log-manifold captures more pronounced non-linear characteristics.
 </p>
 
 <p align="center">
-  <img src="images/eigen_value_convergence.png" width="420"/>
-  <img src="images/linear_pod_modes.png" width="420"/>
+  <img src="images/eigen_value_convergence.png"width = "450"/>
   <br>
-  <b>Figure 3:</b> (Left) Singular-value spectrum decay is ~3× faster in log-space. (Right) Corresponding first sixteen POD modes in linear intensity space for comparison.
+  <b>Figure 3:</b> Singular-value spectrum decay is ~3× faster in log-space. 
 </p>
+
+
 
 ### 3. Physics-Informed Residual Surrogate Network
 
@@ -94,7 +95,7 @@ The combination of these ingredients yields **sub-percent relative error even on
 <p align="center">
   <img src="images/framework.png" width="920" alt="Physics-informed residual surrogate"/>
   <br>
-  <b>Figure 3:</b> End-to-end physics-informed residual surrogate architecture. 
+  <b>Figure 4:</b> End-to-end physics-informed residual surrogate architecture. 
 </p>
 
 ---
@@ -109,13 +110,13 @@ All quantitative results reported in this work are obtained on a **fully open be
 <p align="center">
   <img src="images/log_predict_and_error.png" width="920"/>
   <br>
-  <b>Figure 4:</b> Typical focal-spot reconstruction using the log-manifold surrogate (top) compared with ground-truth SRW simulation (middle) and point-wise relative error (bottom). 
+  <b>Figure 5:</b> Typical focal-spot reconstruction using the log-manifold surrogate (top) compared with ground-truth SRW simulation (middle) and point-wise relative error (bottom). 
 </p>
 
 <p align="center">
   <img src="images/reconstruction_prediction_varying_error.png" width="680"/>
   <br>
-  <b>Figure 5:</b> Mean relative error versus varying parameter on 200 unseen test configurations .
+  <b>Figure 6:</b> Mean relative error versus varying parameter on 200 unseen test configurations .
 </p>
 
 ## Full reproducibility 
@@ -163,7 +164,7 @@ The script will generate plot comparing the predicted focal spot against the gro
 ##  Authors & Affiliation
 
 - **First Author:** X. Song (songxy23@mail.tsinghua.edu.cn)
-- **Supervisor** C.Tang (tang.xuh@tsinghua.edu.cn)
+- **Supervisor:** C.Tang (tang.xuh@tsinghua.edu.cn)
 - **Corresponding Author:** J. S. (sjy22@mail.tsinghua.edu.cn)
 - **co Auther:** L.H. (hul22@mails.tsinghua.edu.cn)
 - **Affiliation:** Department of Engineering Physics, Tsinghua University
