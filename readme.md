@@ -108,13 +108,13 @@ All quantitative results reported in this work are obtained on a **fully open be
 - In stark contrast, an identical architecture trained in linear intensity space completely fails to reproduce high-frequency structures .
 
 <p align="center">
-  <img src="images/log_predict_and_error.png" width="920"/>
+  <img src="images/log_predict_and_error.png" width="750"/>
   <br>
   <b>Figure 5:</b> Typical focal-spot reconstruction using the log-manifold surrogate (top) compared with ground-truth SRW simulation (middle) and point-wise relative error (bottom). 
 </p>
 
 <p align="center">
-  <img src="images/reconstruction_prediction_varying_error.png" width="680"/>
+  <img src="images/reconstruction_prediction_varying_error.png" width="750"/>
   <br>
   <b>Figure 6:</b> Mean relative error versus varying parameter on 200 unseen test configurations .
 </p>
