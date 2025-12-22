@@ -45,17 +45,15 @@ To address the following bottleneck, we present **XRayLogSurrogate**, **the firs
 - **The Innovation:** We propose the **first log-manifold surrogate** modeling framework that represents intensity distributions in logarithmic space, converting highly nonlinear diffraction structures into low-rank learnable manifolds.Combined with **physics-informed constraints**, the model achieves high accuracy with minimal training samples and generalizes well across beamline configurations.
 - **The Result:** The proposed model achieves <1% relative error across the full dynamic range, faithfully reconstructing fine diffraction fringes. Single prediction takes only milliseconds, yielding a **$>10^4$ speedup** over SRW simulation and enabling real-time surrogate-based beamline optimization.
 
----
+### Main Contributions
+- **Physics-Informed & Log-Manifold-Learning-Based Surrogate Modeling Framework:** We propose the first diffraction spot prediction framework based on Physics-Informed and log-manifold learning, enabling efficient extraction of undulator radiation features with high coherence, high spatial frequencies, and large dynamic range.
+- **Efficient Prediction via Proper Orthogonal Decomposition:** The log-manifold representation maps highly nonlinear diffraction structures of undulator radiation onto a learnable low-rank manifold, enabling accurate modeling with limited data and robust generalization across beamline configurations.
+- **Enabling Real-Time Digital Twins and Online Optimization :** The proposed method provides an efficient and practical digital twin modeling approach for fourth-generation light source beamlines, enabling online parameter optimization, rapid parameter scanning, and virtual diagnostics.
 
-##  Key Performance Metrics
-
-| Metric | **Log-Manifold Model (Ours)** | Linear-Space Baseline |
-| :--- | :--- | :--- |
-| **Mean Error** | **< 1 %** | > 100 % |
-| **Simulation Time**  | **1.8 ms** | 2.1 ms |
-| **Speedup vs. SRW** | **> 10,000×** | — |
 
 ---
+
+
 
 ##  Methodology: Log-Manifold Learning
 
@@ -68,10 +66,20 @@ $$
 
 This logarithmic mapping dramatically linearizes the otherwise severely nonlinear diffraction fringes, yielding a **low-rank, highly learnable** manifold in log-space (see visualization below).
 
+
+
+<p align="center">
+  <img src="assets/log_manifold.png" width="800" alt="Log manifold">
+  <br>
+  <em><b>Figure 2:</b> Schematic of the low-dimensional manifold structure of synchrotron radiation
+diffraction patterns under log-manifold mapping</em>
+</p>
+
+
 <p align="center">
   <img src="assets/linear_and_log.png" width="800" alt="Linear vs Log Representation">
   <br>
-  <em><b>Figure 1:</b> Intensity focal spot in linear (left) and log₁₀ (right) scale. The logarithmic representation dramatically improves the learnability of fringes.</em>
+  <em><b>Figure 3:</b> Intensity focal spot in linear (left) and log₁₀ (right) scale. The logarithmic representation dramatically improves the learnability of fringes.</em>
 </p>
 
 ### 2. Log-Manifold POD
@@ -92,14 +100,10 @@ In the present case, **>99.99 % of the log-space energy is captured with only 58
 <p align="center">
   <img src="assets/pod_modes_log_linear.png"width = "820"/>
   <br>
-  <b>Figure 2:</b> POD modes of the log-manifold (left) and linear-manifold (right). The comparison clearly demonstrates that the log-manifold captures more pronounced non-linear characteristics.
+  <b>Figure 4:</b> POD modes of the log-manifold (left) and linear-manifold (right). The comparison clearly demonstrates that the log-manifold captures more pronounced non-linear characteristics.
 </p>
 
-<p align="center">
-  <img src="assets/eigen_value_convergence.png"width = "450"/>
-  <br>
-  <b>Figure 3:</b> Singular-value spectrum decay is ~3× faster in log-space. 
-</p>
+
 
 
 
@@ -120,29 +124,41 @@ The combination of these ingredients yields **sub-percent relative error even on
 <p align="center">
   <img src="assets/framework.png" width="920" alt="Physics-informed residual surrogate"/>
   <br>
-  <b>Figure 4:</b> End-to-end physics-informed residual surrogate architecture. 
+  <b>Figure 5:</b> End-to-end physics-informed residual surrogate architecture. 
 </p>
 
 ---
 
-## Validation & Reproducibility
-
+## Validation & Results
+<p align="center">
+  <img src="assets/SRW_beamline.png" width="800" alt="Beamline configuration schematic for wavefront propagation"/>
+  <br>
+  <b>Figure 6:</b> Beamline configuration schematic for wavefront propagation. 
+</p>
 All quantitative results reported in this work are obtained on a **fully open benchmark dataset** consisting of 200 high-fidelity SRW simulations of a realistic fourth-generation storage-ring beamline, with the undulator deflection parameter $K$ (or vertical magnetic field $B_y$) as the sole varying parameter.
 
 - The log-manifold surrogate achieves **0.42 % mean relative $L^2$ error** over the entire focal plane and faithfully recovers diffraction fringes down to the $10^{-10}$ intensity level.
 - In stark contrast, an identical architecture trained in linear intensity space completely fails to reproduce high-frequency structures .
 
 <p align="center">
-  <img src="assets/log_predict_and_error.png" width="750"/>
+  <img src="assets/log_predict_and_error.png" width="950"/>
   <br>
-  <b>Figure 5:</b> Typical focal-spot reconstruction using the log-manifold surrogate (top) compared with ground-truth SRW simulation (middle) and point-wise relative error (bottom). 
+  <b>Figure 7:</b> Spot reconstruction by the logarithmic-manifold surrogate model (middle), compared
+with SRW results (top) and relative error distributions (bottom), achieving less than 1% relative error
+on both training and test sets. 
 </p>
 
-<p align="center">
-  <img src="assets/reconstruction_prediction_varying_error.png" width="750"/>
-  <br>
-  <b>Figure 6:</b> Mean relative error versus varying parameter on 200 unseen test configurations .
-</p>
+
+
+##  Key Performance Metrics
+
+| Metric | **Log-Manifold Model** | Linear-Space Baseline | SRW Baseline
+| :--- | :--- | :--- | :---
+| **Mean Error** | **< 1 %** | > 100 % | —
+| **Simulation Time**  | **12 ms** | 10 ms | > 3h
+| **Speedup vs. SRW** | **> 10,000×** | — | —
+
+---
 
 ## Full reproducibility 
 
